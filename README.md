@@ -1,5 +1,8 @@
 # Cat Chaser
-<img src="/idea_sketch.PNG">
+<img src="/src/public/idea_sketch.PNG">
+
+![idea_sketch](https://user-images.githubusercontent.com/56740477/75639399-905c2480-5bfe-11ea-8f79-7daf409c2839.PNG)
+
 Avoid cats coming at you.
 
 ### Background and Overview 

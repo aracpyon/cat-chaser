@@ -17,16 +17,16 @@ In addition(as a bonus), user has an option to be a cat to chase after mouse.
   - [ ] it the cat catches mouse, the user wins.
 
 ## Wireframes 
+### splash
+![splash](https://user-images.githubusercontent.com/56740477/75640956-b5539600-5c04-11ea-87e4-1e25b3302853.PNG)
 - Hand-drawn theme of opening. 
 - Some animation on title and cat's ears and hand
 - start button glitters like neo sign
-### splash
-![splash](https://user-images.githubusercontent.com/56740477/75640956-b5539600-5c04-11ea-87e4-1e25b3302853.PNG)
 
-- 3D game
-- ThreeJS
 ### play
 ![idea_sketch](https://user-images.githubusercontent.com/56740477/75639399-905c2480-5bfe-11ea-8f79-7daf409c2839.PNG)
+- 3D game
+- ThreeJS
 
 ## File Structure
 ### root directory

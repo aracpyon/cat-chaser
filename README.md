@@ -1,7 +1,7 @@
 # Cat Chaser
 
 ## Background and Overview 
-**Cat Chaser** is an user-interative game in which user becomes a mouse and avoids getting caught by cats and their paws. 
+**Cat Chaser** is an interative game in which user becomes a mouse and avoids getting caught by cats and their paws. 
 
 ## Functionality and MVPs
 In **Cat Chaser**, 
@@ -17,7 +17,10 @@ In addition(as a bonus), user has an option to be a cat to chase after mouse.
   - [ ] it the cat catches mouse, the user wins.
 
 ## Wireframes 
-### idea sketch
+### splash
+![splash](https://user-images.githubusercontent.com/56740477/75640956-b5539600-5c04-11ea-87e4-1e25b3302853.PNG)
+
+### play
 ![idea_sketch](https://user-images.githubusercontent.com/56740477/75639399-905c2480-5bfe-11ea-8f79-7daf409c2839.PNG)
 
 ## File Structure

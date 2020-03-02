@@ -5,8 +5,10 @@
 
 ## Functionality and MVPs
 In **Cat Chaser**, 
- - [ ] User navigates ``Mouse`` with their mouse avoiding ``Cats``' legs and cat's faces.
- - [ ] ``Mouse`` can jump by clicking the mouse
+ - [ ] User navigates ``Mouse`` by handling their mouse to avoid ``Cat``'s legs and faces.
+ - [ ] ``Mouse`` can jump if user clicks the mouse
+ - [ ] ``Cat``'s paws fall from sky randomly
+ - [ ] ``Cat``'s face appears from the ground randomly
  - [ ] The game continues until ``Mouse`` hits one of ``Cats`` or their legs
  - [ ] The game keeps generating ``Cats`` until the game is over
  - [ ] The speed gets faster as the play duration gets longer

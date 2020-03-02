@@ -58,11 +58,30 @@ In addition(as a bonus), user has an option to be a cat to chase after mouse.
  * [...]
 
 ## Architecture and Technology 
+* Three.js
+  * -- Use for background and basic shapes of ``Mouse`` and ``Cats``
+  * -- ``Mouse`` shape 
 * canvas HTML
-* threejs.org
+  * -- detailed designs on ``Cat``
+  * -- Look for a way to apply PNG or SVG on ``Cat``'s face
 
 
 ## Implementation Timeline 
 * -- create a repo March 1, 2020
 * -- starts Mar 2, 2020
+  * Finish Three.js tutorial for the basic set up
+  * Construct basic shapes of moving elements with Three.js(for now, just cubes)
+  * Start a game logic
+    * -- Moving ``Mouse`` with mouse navigation
+    * -- Juming ``Mouse`` when mouse is clicked
+    * -- ``Cat``'s paws falling from sky
+    * -- ``Cat``'s faces move up from the ground
+    * -- Gameover when ``Mouse`` hits other objects(``Cat``)
+    * -- Game speed slowly increases as the game proceeds
+* -- March 3, 2020
+  * build a game logic
+* -- March 4, 2020
+  * Start working on visual apsects of the game
+* -- March 5, 2020
+  * Find bugs
 

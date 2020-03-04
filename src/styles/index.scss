@@ -16,12 +16,12 @@
 
 .button{
   position: absolute;
-  width: 15%;
-  top: 550px;
+  width: 250px;
+  top: 500px;
   transition: all .3s ease;
 
   &:hover{
-    width: 16%;
+    width: 330px;
     cursor: pointer;
   }
 }
@@ -41,11 +41,43 @@
   left: 600px;
   transition: all .3s ease;
   &:hover{
-    width: 110px;
+    width: 150px;
     
   }
 }
+.faded{
+  opacity: 0.5;
+}
 
+.game-over{
+  position: absolute;
+  background-size: cover;
+  z-index: 100;
+  height: 100%;
+}
+
+.start-again{
+  position: absolute;
+  width: 300px;
+  z-index: 101;
+  bottom: 40px;
+  right: 500px;
+  transition: all .3s ease;
+  &:hover{
+    cursor: pointer;
+    width: 380px;
+  }
+}
 .hidden{
   display: none;
+}
+
+.show{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: none;
+  background-color: black;
+  
+  
 }

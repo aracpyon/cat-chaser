@@ -1,67 +1,75 @@
-// import { scene } from './index';
-const circle = new THREE.CircleGeometry( 3, 32 );
-const circleMaterial = new THREE.MeshLambertMaterial({ color: 0xf7f7f7 });
+const faceTexture = new THREE.TextureLoader().load('src/assets/cat_face_2.PNG');
+const earTexture = new THREE.TextureLoader().load("src/assets/cat_ear.PNG");
+// const sphere = new THREE.SphereGeometry(4, 32, 32);
+const earMaterial = new THREE.MeshBasicMaterial({ map: earTexture });
+const faceMaterial = new THREE.MeshBasicMaterial({map: faceTexture });
+const catMaterial = new THREE.MeshLambertMaterial({ color: 0xf7f7f7 });
+// const triangle = new THREE.ConeGeometry(1.5, 2, 32);
+const triangle = new THREE.Geometry();
+const v1 = new THREE.Vector3(-1.5, 0, 0);
+const v2 = new THREE.Vector3(1.5, 0, 0);
+const v3 = new THREE.Vector3(0, 3, 0);
+triangle.vertices.push(v1);
+triangle.vertices.push(v2);
+triangle.vertices.push(v3);
+triangle.faces.push(new THREE.Face3(0, 1, 2));
+triangle.computeFaceNormals();
+const circle = new THREE.CircleGeometry(4, 32, 32);
 
-export const catFace = new THREE.Mesh( circle, circleMaterial);
+const legTexture = new THREE.TextureLoader().load( 'src/assets/cat_leg.PNG');
+const pawTexture = new THREE.TextureLoader().load( 'src/assets/cat_paw.PNG')
+const cylinder = new THREE.CylinderGeometry(2, 3, 25, 32 );
+const catLegMaterial = new THREE.MeshBasicMaterial({map: legTexture})
+const pawMaterial = new THREE.MeshLambertMaterial({ map: pawTexture });
+const torus = new THREE.TorusGeometry(2, 3, 16, 100);
 
-export const cylinder = new THREE.CylinderGeometry(2, 2, 25, 32 );
-export const cylinderMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
-
-export const catPaw = new THREE.Mesh( cylinder, cylinderMaterial);
-
-catFace.position.set(0, 0, -5);
-// catPaw.position.set(5, 0, -3);
-
-
-export function pawFall(catPaw){
+export function pawFall(catHead){
   let pawtl = new TimelineMax();
-  pawtl.to(catPaw.position, 1, { y: 0, ease: Expo.easeIn })
+  pawtl.to(catHead.position, 1, { y: 7, ease: Expo.easeIn })
 }
 
-function faceRise(catFace) {
+export function faceRise(catHead) {
   let facetl = new TimelineMax();
-  facetl.to(catFace.position, 1, { y: 0, ease: Expo.easeIn})
+  facetl.to(catHead.position, 1, { y: 0, ease: Expo.easeIn})
 }
 
-export function populateCatPaws(scene, mouse){
-  
-    let catPaw = new THREE.Mesh( cylinder, cylinderMaterial)
-    let min = mouse.position.z - 20;
-    let max = mouse.position.z - 60;
-    catPaw.position.x = (Math.random() - 0.5) * 50;
-    catPaw.position.y = 20;
-    catPaw.position.z = Math.random() * ( max - min) + min;
-    //Math.random() * (max - min) + min;
-    pawFall(catPaw)
-    scene.add(catPaw);
-
-  
-}
-export function populateCatFace(scene, mouse) {
-  let catFace = new THREE.Mesh( circle, circleMaterial);
-  catFace.position.x = (Math.random() - 0.5) * 50;
-  catFace.position.y = -3;
-  catFace.position.z = Math.random() * mouse.position.z * 200;
-  faceRise(catFace);
-  scene.add(catFace);
-}
 
 export function populateCats(scene, mouse) {
-  let catPaw = new THREE.Mesh(cylinder, cylinderMaterial);
-  let catFace = new THREE.Mesh(circle, circleMaterial);
-  let min = mouse.position.z - 20;
-  let max = mouse.position.z - 60;
-  catPaw.position.x = (Math.random() - 0.5) * 50;
-  catPaw.position.y = 20;
-  catPaw.position.z = Math.random() * (max - min) + min;
+  let catFace = new THREE.Mesh(circle, faceMaterial);
+  const catEar1 = new THREE.Mesh(triangle, earMaterial);
+  const catEar2 = new THREE.Mesh(triangle, earMaterial);
+  catFace.position.set(0, 0, 0);
+  // catFace.rotation.y = 180;
+  catEar1.position.set(-2, 3, 0);
+  catEar1.rotation.z = 44.5;
+  catEar2.position.set(2, 3, 0);
+  catEar2.rotation.z = -44.5;
+  const catHead = new THREE.Group();
+  catHead.add(catFace, catEar1, catEar2);
+  
+  const catLeg = new THREE.Mesh(cylinder, catLegMaterial);
+  const catPaw = new THREE.Mesh(torus, pawMaterial);
+  catLeg.position.set(0, 0, 0);
+  catLeg.rotation.y = 360;
+  catPaw.position.set(0, -9.5, 1);
+  catPaw.rotation.x = 0.5*Math.PI;
+  const catPawLeg = new THREE.Group();
+  catPawLeg.add(catLeg, catPaw);
 
-  catFace.position.x = (Math.random() - 0.5) * 50;
-  catFace.position.y = -3;
-  catFace.position.z = Math.random() * (max - min) + min;
+  let min = mouse.position.z - 35;
+  let max = mouse.position.z - 70;
+  catPawLeg.position.x = (Math.random() - 0.5) * 50;
+  catPawLeg.position.y = 40;
+  catPawLeg.position.z = Math.random() * (max - min) + min;
 
-  pawFall(catPaw);
-  faceRise(catFace);
-  if (!(catFace.position.x === catPaw.position.x) && !(catFace.position.z === catPaw.position.z)){
-    scene.add(catPaw, catFace);
+  catHead.position.x = (Math.random() - 0.5) * 50;
+  catHead.position.y = -2;
+  catHead.position.z = Math.random() * (max - min) + min;
+
+  pawFall(catPawLeg);
+  faceRise(catHead);
+  if (!(catHead.position.x === catPawLeg.position.x) && !(catHead.position.z === catPawLeg.position.z)){
+    scene.add(catPawLeg, catHead);
   }
+  // scene.add(catPawLeg, catHead);
 }

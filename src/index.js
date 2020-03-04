@@ -2,8 +2,9 @@ import "./styles/index.scss";
 import  {ground } from './background';
 import { mouse, mouseController } from './mouse';
 import { frontLight, backLight } from './light';
-import { cylinder, cylinderMaterial, populateCatPaws,
-populateCatFace, populateCats, pawFall, catPaw } from './cat';
+import {
+  populateCats
+} from "./cat";
 // import { PointerLockControls } from './PointerLockControls';
 
 export var scene = new THREE.Scene();
@@ -16,7 +17,7 @@ var camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.z = 5;
+camera.position.z = 4;
 
 camera.position.x = 0;
 camera.position.y = 2;
@@ -25,7 +26,7 @@ camera.position.y = 2;
 
 var renderer = new THREE.WebGLRenderer({ antialias: true });
 // renderer.setClearColor("#e5e5e5");
-renderer.setClearColor("#ffcc66");
+renderer.setClearColor("#80e5ff");
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -53,17 +54,24 @@ document.addEventListener("mousemove", mouseController, false);
 
 function animate() {
   requestAnimationFrame(animate);
-  // if (frameCount > 60){
-  //     populateCats(scene, mouse);
-  //     frameCount = 0;
-  // }
+  const start = document.getElementById("start");
+  start.addEventListener("click", () => {
+    const splash = document.getElementById("splash");
+    splash.classList.add('hidden');
+
+  });
+    // if (frameCount > 60){
+    //   populateCats(scene, mouse);
+    //   frameCount = 0;
+    // }
     
-  //   mouse.position.z -= 0.3;
-  //   camera.position.z -= 0.3;
-  //   ground.position.z -= 0.3;
+    // mouse.position.z -= 0.3;
+    // camera.position.z -= 0.3;
+    // ground.position.z -= 0.3;
     
-  //   frameCount += 1;
+    // frameCount += 1;
     
+  
     // if (catPaw.position.z === mouse.position.z) scene.remove(catPaw)
     renderer.render(scene, camera);
 };
@@ -74,9 +82,11 @@ function onMouseClick(event){
   let tl = new TimelineMax();
   tl.to(mouse.position, .3, { y: 4, ease: Expo.easeOut })
   tl.to(mouse.position, .1, { y: 0, ease: Expo.ease })
+ 
   
 }
 
 window.addEventListener('click', onMouseClick );
+
 animate();
 

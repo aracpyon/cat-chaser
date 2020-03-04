@@ -1,0 +1,51 @@
+.splash-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.splash {
+  position: absolute;
+  background-size: cover;
+  padding: 0 100px;
+  width: 60%;
+  
+  
+}
+
+.button{
+  position: absolute;
+  width: 15%;
+  top: 550px;
+  transition: all .3s ease;
+
+  &:hover{
+    width: 16%;
+    cursor: pointer;
+  }
+}
+
+.paw{
+  position: absolute;
+  width: 100px;
+  top: 550px;
+  right: 600px;
+}
+
+
+.github{
+  position: absolute;
+  width: 100px;
+  top: 550px;
+  left: 600px;
+  transition: all .3s ease;
+  &:hover{
+    width: 110px;
+    
+  }
+}
+
+.hidden{
+  display: none;
+}

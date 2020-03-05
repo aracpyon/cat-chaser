@@ -17,6 +17,7 @@ import { distance, collision } from './util';
 let scene = new THREE.Scene();
 
 let frameCount = 0;
+let soundFlag = true;
 let frameId;
 let camera = new THREE.PerspectiveCamera(
   75,
@@ -25,21 +26,21 @@ let camera = new THREE.PerspectiveCamera(
   1000
 );
 camera.position.z = 4;
-
 camera.position.x = 0;
 camera.position.y = 2;
-// camera.rotation.x = -0.3;
-
-// camera.rotation.x = ;
 
 var renderer = new THREE.WebGLRenderer({ antialias: true });
-// renderer.setClearColor("#e5e5e5");
+let gameOver = document.getElementById("game-over-container");
+
 renderer.setClearColor("#80e5ff");
-
 renderer.setSize(window.innerWidth, window.innerHeight);
-
 document.body.appendChild(renderer.domElement);
 
+const canvas = document.getElementsByTagName("canvas")[0];
+const playSong = document.getElementById("play-song");
+const splashSong = document.getElementById("splash-song");
+const blastSound = document.getElementById("blast1");
+const blastSound2 = document.getElementById("blast2");
 //responsive window
 window.addEventListener("resize", () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -51,16 +52,28 @@ window.addEventListener("resize", () => {
 
 scene.add(mouse, ground, frontLight, backLight);
 
-
-
-
-// populateCatPaws(scene);
-
 document.addEventListener("mousemove", mouseController, false);
 
+if (soundFlag) {
+  splashSong.play();
+}
+const soundOn = document.getElementById("sound-on");
+const soundOff = document.getElementById("sound-off");
+soundOn.addEventListener('click', () => {
+  soundOn.classList.add("hidden");
+  soundOff.classList.remove("hidden");
+  soundFlag = false;
+  splashSong.pause();
+})
 
-let gameOver = document.getElementById("game-over-container");
-const canvas = document.getElementsByTagName("canvas")[0];
+soundOff.addEventListener('click', () => {
+  soundOff.classList.add("hidden");
+  soundOn.classList.remove("hidden");
+  soundFlag = true;
+  splashSong.play();
+})
+
+
 
 function animate() {
   frameId = requestAnimationFrame(animate);
@@ -70,11 +83,12 @@ function animate() {
     frameCount = 0;
   }
   legs.forEach(leg => {
-    if (distance(mouse.position.x, mouse.position.z, leg.position.x, leg.position.z) < 5) {
-      
+    if (distance(mouse.position.x, mouse.position.z, leg.position.x, leg.position.z) < 3) {
+      playSong.pause();
       cancelAnimationFrame(frameId);
       gameOver.classList.add("show");
       canvas.classList.add("faded")
+      if (soundFlag) blastSound.play();
     } 
   })
 
@@ -87,6 +101,8 @@ function animate() {
         head.position.z
       ) < 1
     ) {
+      playSong.pause();
+      if (soundFlag) blastSound.play();
       cancelAnimationFrame(frameId);
       gameOver.classList.add("show");
       canvas.classList.add("faded");
@@ -111,7 +127,7 @@ function animate() {
   
   function onMouseClick(event){
     let tl = new TimelineMax();
-    tl.to(mouse.position, .3, { y: 4, ease: Expo.easeOut })
+    tl.to(mouse.position, .3, { y: 4.5, ease: Expo.easeOut })
     tl.to(mouse.position, .1, { y: 0, ease: Expo.ease })
     
     
@@ -123,9 +139,14 @@ function animate() {
   const start = document.getElementById("start");
   const splash = document.getElementById("splash");
   const startAgain = document.getElementById("start-again");
+  
   start.addEventListener("click", () => {
     splash.classList.add('hidden');
     animate();
+    if (soundFlag) {
+      splashSong.pause();
+      playSong.play();
+    }
   });
 
   function resetGlobalVariables() {

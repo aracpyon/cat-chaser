@@ -85,3 +85,8 @@ In addition(as a bonus), user has an option to be a cat to chase after mouse.
 * -- March 5, 2020
   * Find bugs
 
+## Sound
+I don't own these music
+* splash song: https://www.youtube.com/watch?v=8tDbWLk_KfA
+* play song: Nyan Cat https://www.youtube.com/watch?v=QH2-TGUlwu4&t=38s
+

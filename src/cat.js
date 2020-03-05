@@ -20,11 +20,11 @@ const circle = new THREE.CircleGeometry(4, 32, 32);
 
 const legTexture = new THREE.TextureLoader().load( 'src/assets/cat_leg.PNG');
 const pawTexture = new THREE.TextureLoader().load( 'src/assets/cat_paw.PNG')
-const cylinder = new THREE.CylinderGeometry(2, 3, 25, 32 );
+const cylinder = new THREE.CylinderGeometry(2, 2.3, 23, 32 );
 
 const catLegMaterial = new THREE.MeshBasicMaterial({map: legTexture})
 const pawMaterial = new THREE.MeshLambertMaterial({ map: pawTexture });
-const torus = new THREE.TorusGeometry(2, 3, 16, 100);
+const torus = new THREE.TorusGeometry(1.5, 2, 16, 100);
 
 export function pawFall(catPaw){
   let pawtl = new TimelineMax();

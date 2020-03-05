@@ -1,5 +1,5 @@
 // const planeGeometry = new THREE.PlaneGeometry(window.innerWidth, 2);
-const groundColor = new THREE.Color("#ffcc66");
+const groundColor = new THREE.Color("#ffe066");
 const planeGeometry = new THREE.PlaneGeometry(30, window.innerHeight);
 const groundMaterial = new THREE.MeshBasicMaterial({ color: groundColor });
 

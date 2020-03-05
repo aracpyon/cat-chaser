@@ -99,7 +99,7 @@ function animate() {
         mouse.position.z,
         head.position.x,
         head.position.z
-      ) < 1
+      ) < 3
     ) {
       playSong.pause();
       if (soundFlag) blastSound.play();

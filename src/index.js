@@ -8,16 +8,17 @@ import {
   pawFall,
   faceRise,
   populateCats,
-  obstacles
+  legs,
+  heads
 } from "./cat";
 import { distance, collision } from './util';
 // import { PointerLockControls } from './PointerLockControls';
 
-export var scene = new THREE.Scene();
+let scene = new THREE.Scene();
 
 let frameCount = 0;
 let frameId;
-var camera = new THREE.PerspectiveCamera(
+let camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
   0.1,
@@ -68,14 +69,30 @@ function animate() {
     populateCats(scene, mouse)
     frameCount = 0;
   }
-  obstacles.forEach(obstacle => {
-    if (distance(mouse.position.x, mouse.position.z, obstacle.position.x, obstacle.position.z) < 5) {
+  legs.forEach(leg => {
+    if (distance(mouse.position.x, mouse.position.z, leg.position.x, leg.position.z) < 5) {
       
       cancelAnimationFrame(frameId);
       gameOver.classList.add("show");
       canvas.classList.add("faded")
     } 
   })
+
+  heads.forEach(head => {
+    if (
+      distance(
+        mouse.position.x,
+        mouse.position.z,
+        head.position.x,
+        head.position.z
+      ) < 1
+    ) {
+      cancelAnimationFrame(frameId);
+      gameOver.classList.add("show");
+      canvas.classList.add("faded");
+    } 
+  })
+
   mouse.position.z -= 0.3;
   camera.position.z -= 0.3;
   ground.position.z -= 0.3;
@@ -112,22 +129,45 @@ function animate() {
   });
 
   function resetGlobalVariables() {
+   
+    heads.forEach(head => {
+      scene.remove(head);
+    });
+    legs.forEach(leg => {
+      scene.remove(leg);
+    })
+    document.body.removeChild(renderer.domElement);
+    gameOver.classList.remove("show");
+    canvas.classList.remove("faded");
+
+    scene = new THREE.Scene();
     frameCount = 0;
-    frameId;
+    frameId = 0;
     camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
       0.1,
       1000
     );
-    renderer = new THREE.WebGLRenderer({ antialias: true });
-    obstacles = [];
+    // debugger
+    camera.position.z = 4;
+    camera.position.x = 0;
+    camera.position.y = 2;
+    // debugger
+
+    // renderer = new THREE.WebGLRenderer({ antialias: true });
+    document.body.appendChild(renderer.domElement);
+    // scene.add(mouse, ground, frontLight, backLight);
+    mouse.position.set(0, 0, 0);
+    animate();
+    // start.removeEventListener("click")
+    // debugger
+    
 
   }
 
   startAgain.addEventListener("click", () => {
-    resetGlobalVariables();
-    // animate();
+    location.reload();
   })
   
   

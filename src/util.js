@@ -6,12 +6,12 @@ export function distance(mouseX, mouseZ, objX, objZ) {
   return Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceZ, 2));
 }
 
-// export function collision(mouse, obstacles) {
-//   for (let i = 0; i < obstacles.length; i++) {
-//     if (distance(mouse.position.x, mouse.position.z, obstacles[i].position.x, obstacles[i].position.z)){
-//       console.log('has collided');
-//     }
-//   }
+// export function distance(mouse) {
+//   let x1 = head.position.x - 2;
+//   let x2 = head.position.x + 2;
+//   let y1 = head.position.y - 2;
+//   let y2 = head.position.y + 2;
+//   let length = x2 - x1;
 // }
 
 export function collision(mouse, obstacle) {

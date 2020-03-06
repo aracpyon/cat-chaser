@@ -127,7 +127,7 @@ function animate() {
   
   function onMouseClick(event){
     let tl = new TimelineMax();
-    tl.to(mouse.position, .3, { y: 4.5, ease: Expo.easeOut })
+    tl.to(mouse.position, .3, { y: 5, ease: Expo.easeOut })
     tl.to(mouse.position, .1, { y: 0, ease: Expo.ease })
     
     

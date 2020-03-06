@@ -189,6 +189,7 @@ function animate() {
 
   startAgain.addEventListener("click", () => {
     location.reload();
+    soundFlag = true;
   })
   
   

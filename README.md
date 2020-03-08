@@ -3,6 +3,9 @@
 ## Background and Overview 
 **Cat Chaser** is an interative game in which user becomes a mouse and avoids getting caught by cats and their paws. 
 
+## Live Demo
+[Cat Chaser Live Demo](https://aracpyon.github.io/cat-chaser/)
+
 ## Functionality and MVPs
 In **Cat Chaser**, 
  - [ ] User navigates ``Mouse`` by handling their mouse to avoid ``Cat``'s legs and faces.

@@ -12,7 +12,7 @@ import {
   heads
 } from "./cat";
 import { distance, collision } from './util';
-// import { PointerLockControls } from './PointerLockControls';
+
 
 let scene = new THREE.Scene();
 

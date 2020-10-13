@@ -15,7 +15,7 @@ const hemiSphereGeom = new THREE.SphereBufferGeometry(
   0,
   Math.PI * 0.5
 );
-export var mouseBody = new THREE.Mesh(hemiSphereGeom, material);
+export let mouseBody = new THREE.Mesh(hemiSphereGeom, material);
 
 // cubeMouse.position.set(0, 0, 0);
 mouseBody.position.set(0, 0, 0);
@@ -38,16 +38,16 @@ CustomSinCurve.prototype = Object.create(THREE.Curve.prototype);
 CustomSinCurve.prototype.constructor = CustomSinCurve;
 
 CustomSinCurve.prototype.getPoint = function(t) {
-  var tx = t * 3 - 1.5;
-  var ty = Math.sin(2 * Math.PI * t);
-  var tz = 0;
+  let tx = t * 3 - 1.5;
+  let ty = Math.sin(2 * Math.PI * t);
+  let tz = 0;
 
   return new THREE.Vector3(tx, ty, tz).multiplyScalar(this.scale);
 };
 
-var path = new CustomSinCurve(0.3);
-var tailGeometry = new THREE.TubeGeometry(path, 20, 0.08, 8, false);
-var tail = new THREE.Mesh(tailGeometry, material);
+let path = new CustomSinCurve(0.3);
+let tailGeometry = new THREE.TubeGeometry(path, 20, 0.08, 8, false);
+let tail = new THREE.Mesh(tailGeometry, material);
 
 tail.position.set(0, 0.5, 1)
 tail.rotation.y = 1.5;

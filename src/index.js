@@ -29,7 +29,7 @@ camera.position.z = 4;
 camera.position.x = 0;
 camera.position.y = 2;
 
-var renderer = new THREE.WebGLRenderer({ antialias: true });
+let renderer = new THREE.WebGLRenderer({ antialias: true });
 let gameOver = document.getElementById("game-over-container");
 
 renderer.setClearColor("#80e5ff");

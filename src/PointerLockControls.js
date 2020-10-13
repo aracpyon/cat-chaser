@@ -8,7 +8,7 @@
 
 
 
-var PointerLockControls = function(camera, domElement) {
+const PointerLockControls = function(camera, domElement) {
   if (domElement === undefined) {
     console.warn(
       'THREE.PointerLockControls: The second parameter "domElement" is now mandatory.'
@@ -23,24 +23,24 @@ var PointerLockControls = function(camera, domElement) {
   // internals
   //
 
-  var scope = this;
+  let scope = this;
 
-  var changeEvent = { type: "change" };
-  var lockEvent = { type: "lock" };
-  var unlockEvent = { type: "unlock" };
+  let changeEvent = { type: "change" };
+  let lockEvent = { type: "lock" };
+  let unlockEvent = { type: "unlock" };
 
-  var euler = new THREE.Euler(0, 0, 0, "YXZ");
+  let euler = new THREE.Euler(0, 0, 0, "YXZ");
 
-  var PI_2 = Math.PI / 2;
+  let PI_2 = Math.PI / 2;
 
-  var vec = new THREE.Vector3();
+  let vec = new THREE.Vector3();
 
   function onMouseMove(event) {
     if (scope.isLocked === false) return;
 
-    var movementX =
+    let movementX =
       event.movementX || event.mozMovementX || event.webkitMovementX || 0;
-    var movementY =
+    let movementY =
       event.movementY || event.mozMovementY || event.webkitMovementY || 0;
 
     euler.setFromQuaternion(camera.quaternion);
@@ -98,7 +98,7 @@ var PointerLockControls = function(camera, domElement) {
   };
 
   this.getDirection = (function() {
-    var direction = new Vector3(0, 0, -1);
+    let direction = new Vector3(0, 0, -1);
 
     return function(v) {
       return v.copy(direction).applyQuaternion(camera.quaternion);
